@@ -1,0 +1,33 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: prometheus-pv-config-volume
+  namespace: monitoring
+  labels:
+    app: prometheus-server
+spec:
+  storageClassName: prometheus-config-volume
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/c/Docker/Volumes/prometheus-server/config/"
+
+---
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: prometheus-pv-storage-volume
+  namespace: monitoring
+  labels:
+    app: prometheus-server
+spec:
+  storageClassName: prometheus-storage-volume
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/c/Docker/Volumes/prometheus-server/storage/"

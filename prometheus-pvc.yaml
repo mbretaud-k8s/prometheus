@@ -1,0 +1,33 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: prometheus-pvc-config-volume
+  namespace: monitoring
+  labels:
+    app: prometheus-server
+    type: local
+spec:
+  storageClassName: prometheus-config-volume
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: prometheus-pvc-storage-volume
+  namespace: monitoring
+  labels:
+    app: prometheus-server
+    type: local
+spec:
+  storageClassName: prometheus-storage-volume
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
